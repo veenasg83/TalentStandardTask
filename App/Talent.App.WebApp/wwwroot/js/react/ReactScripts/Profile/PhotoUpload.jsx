@@ -14,7 +14,9 @@ export default class PhotoUpload extends Component {
     
 
     render() {
-
+        return (
+            <p>social</p>
+        )
         
     }
 }

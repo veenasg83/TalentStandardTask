@@ -12,6 +12,9 @@ export class Address extends React.Component {
 
    
     render() {
+        return (
+            <p>address</p>
+        )
        
     }
 
@@ -25,6 +28,9 @@ export class Nationality extends React.Component {
 
     
     render() {
+        return (
+            <p>nationality</p>
+        )
 
         
     }

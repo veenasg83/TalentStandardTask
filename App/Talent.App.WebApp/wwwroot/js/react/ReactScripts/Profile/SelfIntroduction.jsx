@@ -13,7 +13,9 @@ export default class SelfIntroduction extends React.Component {
 
 
     render() {
-       
+        return (
+            <p>social</p>
+        )
     }
 }
 

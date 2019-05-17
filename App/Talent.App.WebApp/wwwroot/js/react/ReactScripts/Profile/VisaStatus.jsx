@@ -10,6 +10,9 @@ export default class VisaStatus extends React.Component {
     
 
     render() {
+        return (
+            <p>social</p>
+        )
       
     }
 }

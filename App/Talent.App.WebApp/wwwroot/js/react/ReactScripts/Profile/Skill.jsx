@@ -9,7 +9,10 @@ export default class Skill extends React.Component {
     };
 
   
-   render() {
+    render() {
+        return (
+            <p>social</p>
+        )
         
     }
 }

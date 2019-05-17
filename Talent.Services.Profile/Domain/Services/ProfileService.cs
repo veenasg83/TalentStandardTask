@@ -51,17 +51,44 @@ namespace Talent.Services.Profile.Domain.Services
 
         public async Task<TalentProfileViewModel> GetTalentProfile(string Id)
         {
+            User profile = await _userRepository.GetByIdAsync(Id);
+            if (profile != null)
+            {
+                var result = new TalentProfileViewModel
+                {
+                    Id = profile.Id,
+                    FirstName = profile.FirstName,
+                    LastName = profile.LastName,
+                    Email = profile.Email,
+                    Phone = profile.Phone,
+                    LinkedAccounts = profile.LinkedAccounts,
+                };
+                return result;
+            }
+            return null;
             //Your code here;
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public async Task<bool> UpdateTalentProfile(TalentProfileViewModel model, string updaterId)
         {
-            //Your code here;
-            throw new NotImplementedException();
+            try
+            {
+                if (model.Id != null)
+                {
+                    var user = (await _userRepository.GetByIdAsync(updaterId));
+                    user.LinkedAccounts = model.LinkedAccounts;
+                    return true;
+                }
+                return false;
+            }
+            catch (MongoException e)
+            {
+                return false;
+            }
         }
 
-        public async Task<EmployerProfileViewModel> GetEmployerProfile(string Id, string role)
+            public async Task<EmployerProfileViewModel> GetEmployerProfile(string Id, string role)
         {
 
             Employer profile = null;

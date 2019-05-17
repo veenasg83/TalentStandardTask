@@ -77,6 +77,7 @@ export default class AccountProfile extends React.Component {
             type: "GET",
             success: function (res) {
                 this.updateWithoutSave(res.data)
+               
             }.bind(this)
         })
         this.init()
@@ -87,6 +88,8 @@ export default class AccountProfile extends React.Component {
         this.setState({
             profileData: newProfile
         })
+        console.log("talentnewValues", newValues)
+        console.log("talent", newProfile)
     }
 
     //updates component's state and saves data
