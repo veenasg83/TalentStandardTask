@@ -62,6 +62,9 @@ namespace Talent.Services.Profile.Domain.Services
                     Email = profile.Email,
                     Phone = profile.Phone,
                     LinkedAccounts = profile.LinkedAccounts,
+                    Summary = profile.Summary,
+                    Description = profile.Description,
+                    Address = profile.Address
                 };
                 return result;
             }
@@ -78,6 +81,15 @@ namespace Talent.Services.Profile.Domain.Services
                 {
                     var user = (await _userRepository.GetByIdAsync(updaterId));
                     user.LinkedAccounts = model.LinkedAccounts;
+                    user.Summary = model.Summary;
+                    user.Description = model.Description;
+                    user.FirstName = model.FirstName;
+                    user.LastName = model.LastName;
+                    user.Email = model.Email;
+                    user.Phone = model.Phone;
+                    user.Address = model.Address;
+
+                    await _userRepository.Update(user);
                     return true;
                 }
                 return false;

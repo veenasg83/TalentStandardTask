@@ -24,7 +24,9 @@ export default class AccountProfile extends React.Component {
 
         this.state = {
             profileData: {
-                address: {},
+                address: {                
+                    
+                },
                 nationality: '',
                 education: [],
                 languages: [],
@@ -152,6 +154,17 @@ export default class AccountProfile extends React.Component {
                                         >
                                             <SocialMediaLinkedAccount
                                                 linkedAccounts={this.state.profileData.linkedAccounts}
+                                                updateProfileData={this.updateWithoutSave}
+                                                saveProfileData={this.updateAndSaveData}
+                                            />
+                                        </FormItemWrapper>
+                                        <FormItemWrapper
+                                            title='Description'
+                                            tooltip = 'Add summary and description about yourself'
+                                        >
+                                            <SelfIntroduction
+                                                summary={this.state.profileData.summary}
+                                                description={this.state.profileData.description}
                                                 updateProfileData={this.updateWithoutSave}
                                                 saveProfileData={this.updateAndSaveData}
                                             />
