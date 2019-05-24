@@ -1,4 +1,4 @@
-﻿import React from 'react';
+﻿ import React from 'react';
 import AuthenticatingBanner from '../Layout/Banner/AuthenticatingBanner.jsx';
 import { LoggedInNavigation } from '../Layout/LoggedInNavigation.jsx';
 import propTypes from 'prop-types'

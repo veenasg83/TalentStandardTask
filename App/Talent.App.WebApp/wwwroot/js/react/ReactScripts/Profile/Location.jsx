@@ -182,13 +182,34 @@ export class Address extends React.Component {
 export class Nationality extends React.Component {
     constructor(props) {
         super(props)
-       
+
+        this.handleChange = this.handleChange.bind(this);
+          }
+
+    handleChange(event) {
+        let data = {}
+        data.nationality = event.target.value;
+        this.props.saveProfileData(data);
     }
 
-    
     render() {
+        let selectedNationality = this.props.nationalityData
+        const nationalityOptions = Object.keys(Countries).map(x => <option key={x} value={x}>{x}</option>);
+
         return (
-            <p>nationality</p>
+            <div className="ui eight wide column">
+                <select
+                    className="ui right labeled dropdown"                    
+                    value={selectedNationality}
+                    onChange={this.handleChange}
+                    name = "nationality"
+                >
+                    <option>  Select your nationality</option>  
+                    {nationalityOptions}
+                    </select>
+               
+
+            </div>
         )
 
         

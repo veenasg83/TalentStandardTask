@@ -90,8 +90,8 @@ export default class AccountProfile extends React.Component {
         this.setState({
             profileData: newProfile
         })
-        console.log("talentnewValues", newValues)
-        console.log("talent", newProfile)
+        console.log("newprofile", newProfile)
+       
     }
 
     //updates component's state and saves data
