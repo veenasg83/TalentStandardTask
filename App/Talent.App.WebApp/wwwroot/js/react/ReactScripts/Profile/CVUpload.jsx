@@ -12,7 +12,7 @@ export default class CVUpload extends React.Component {
 
     render() {
         return (
-            <p>social</p>
+            <p>CV</p>
         )
     }
    

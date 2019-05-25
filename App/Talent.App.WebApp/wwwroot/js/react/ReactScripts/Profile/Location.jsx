@@ -97,79 +97,88 @@ export class Address extends React.Component {
             
             cityOptions = (Cities).map((x) => <option key={x} value={x}>{x}</option>);
         }
-        return (
-            <div >
-            <div class='inline fields'>
-                <div class="three wide field">
-            <ChildSingleInput
-                inputType="text"
-                label="Number"
-                name="number"
-                value={this.state.editedAddress.number}
-                controlFunc={this.handleChange}
-                maxLength={80}
-                placeholder="Enter your address number"
-                errorMessage="Please enter a valid address number"
-                    />
-                </div>
-                <div class = "eight wide field">
-            <ChildSingleInput
-                inputType="text"
-                label="Street"
-                name="street"
-                value={this.state.editedAddress.street}
-                controlFunc={this.handleChange}
-                maxLength={80}
-                placeholder="Enter your address street"
-                errorMessage="Please enter a valid address street"
-                    />
-                </div>
-                <div class = "five wide field">
-            <ChildSingleInput
-                inputType="text"
-                label="Suburb"
-                name="suburb"
-                value={this.state.editedAddress.suburb}
-                controlFunc={this.handleChange}
-                maxLength={80}
-                placeholder="Enter your address suburb"
-                errorMessage="Please enter a valid address suburb"
-                    />
-                </div>
-                </div>
-                <b>Country</b>
-                <select
-                    label="postCode"
-                    className="ui right labeled dropdown"
-                    placeholder="Country"
-                    value={selectedCountry}
-                    onChange={this.handleChange}
-                    name="country">
-                    <option value="">Select a country</option>
-                    {countryOptions}
-                </select>
-                <br />
-                <b>City</b>
-                <select
-                    className="ui right labeled dropdown"
-                    placeholder="City"
-                    value={selectedCity}
-                    onChange={this.handleChange}
-                    name="city">
-                    <option value="">Select a city</option>
-                    {cityOptions}
-                </select>
-                <br />
-                <ChildSingleInput
-                    inputType="number"
-                    label="Post Code"
-                    name="postCode"
-                    value={this.state.editedAddress.postCode}
-                    controlFunc={this.handleChange}
-                    maxLength={80}
-                    placeholder="Enter your address post code"
-                    errorMessage="Please enter a valid address post code"
-                />
+        return (            
+                <div class='ui sixteen wide column'>
+                    <div className="fields">
+                        <div className="three wide field">
+                            <ChildSingleInput
+                                inputType="text"
+                                label="Number"
+                                name="number"
+                                value={this.state.editedAddress.number}
+                                controlFunc={this.handleChange}
+                                maxLength={80}
+                                placeholder="Enter your address number"
+                                errorMessage="Please enter a valid address number"
+                                    />
+                        </div>
+                        <div className="eight wide field">
+                            <ChildSingleInput
+                                inputType="text"
+                                label="Street"
+                                name="street"
+                                value={this.state.editedAddress.street}
+                                controlFunc={this.handleChange}
+                                maxLength={80}
+                                placeholder="Enter your address street"
+                                errorMessage="Please enter a valid address street"
+                                    />
+                        </div>
+                        <div className="five wide field">
+                            <ChildSingleInput
+                                inputType="text"
+                                label="Suburb"
+                                name="suburb"
+                                value={this.state.editedAddress.suburb}
+                                controlFunc={this.handleChange}
+                                maxLength={80}
+                                placeholder="Enter your address suburb"
+                                errorMessage="Please enter a valid address suburb"
+                                    />
+                        </div>
+                    </div>
+                    <div className="fields">
+                        <div className="six wide field">
+                            <b>Country</b>
+                                <select
+                                    label="postCode"
+                                    className="ui right labeled dropdown"
+                                    placeholder="Country"
+                                    value={selectedCountry}
+                                    onChange={this.handleChange}
+                                    name="country">
+                                    <option value="">Select a country</option>
+                                    {countryOptions}
+                                        </select>
+                        </div>
+                                          
+                        <div className="six wide field">
+                            <b>City</b>
+                            <select
+                                className="ui right labeled dropdown"
+                                placeholder="City"
+                                value={selectedCity}
+                                onChange={this.handleChange}
+                                name="city">
+                                <option value="">Select a city</option>
+                                {cityOptions}
+                                    </select>
+                                    </div>
+                              
+                
+                        <div className="three wide field">
+                            <ChildSingleInput
+                                inputType="number"
+                                label="Post Code"
+                                name="postCode"
+                                value={this.state.editedAddress.postCode}
+                                controlFunc={this.handleChange}
+                                maxLength={80}
+                                placeholder="Enter your address post code"
+                                errorMessage="Please enter a valid address post code"
+                                    />
+                        </div>
+                    </div>
                 <button type="button" className="ui teal button" onClick={this.saveAddress}>Save</button>
                 <button type="button" className="ui button" onClick={this.closeEdit}>Cancel</button>
                 </div>

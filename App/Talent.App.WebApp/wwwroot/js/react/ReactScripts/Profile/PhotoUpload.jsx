@@ -1,6 +1,7 @@
 ﻿/* Photo upload section */
 import React, { Component } from 'react';
 import Cookies from 'js-cookie';
+import { Image } from 'semantic-ui-react'
 
 export default class PhotoUpload extends Component {
 
@@ -14,8 +15,10 @@ export default class PhotoUpload extends Component {
     
 
     render() {
+        let imageSource = "../../../../icons/Camera_default.png"
+        const uploadedPhoto = <img src={imageSource} width="120px" height="120px" />
         return (
-            <p>social</p>
+            <Image src={imageSource} size='tiny' circular bordered />
         )
         
     }
