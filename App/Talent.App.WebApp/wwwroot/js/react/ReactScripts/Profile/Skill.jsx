@@ -168,7 +168,7 @@ class SkillDetail extends React.Component {
 
     updateData() {
         const found = Object.values(this.state.skill).find(value => value.trim() === "")
-
+        console.log("skill",this.state.skill);
         if (found === undefined) {
             this.props.updateSkill(this.state.skill)
             this.closeEdit()

@@ -240,10 +240,23 @@ namespace Talent.Services.Profile.Controllers
 
         [HttpPost("updateProfilePhoto")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "talent")]
-        public async Task<ActionResult> UpdateProfilePhoto()
+        public async Task<ActionResult> UpdateProfilePhoto(IFormFile file)
         {
+            if (file != null)
+            {
+                try
+                {
+                    await _profileService.UpdateTalentPhoto(_userAppContext.CurrentUserId, file);
+                    return Json(new { Success = true });
+                }
+                catch (Exception e)
+                {
+                    return Json(new { Success = false });
+                }
+            }
+            return Json(new { Success = false });
             //Your code here;
-            throw new NotImplementedException();
+           // throw new NotImplementedException();
         }
 
         [HttpPost("updateTalentCV")]

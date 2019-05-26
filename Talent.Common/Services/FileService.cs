@@ -28,19 +28,42 @@ namespace Talent.Common.Services
         public async Task<string> GetFileURL(string id, FileType type)
         {
             //Your code here;
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            string fileURL = await Task.Run(() => string.Join("/", "http://localhost:60290/images", id));
+            return fileURL;
         }
 
         public async Task<string> SaveFile(IFormFile file, FileType type)
         {
-            //Your code here;
-            throw new NotImplementedException();
+            var uniqueName = Convert.ToString(Guid.NewGuid());
+            var extension = Path.GetExtension(file.FileName);
+            var newFileName = uniqueName + extension;
+
+            if (file.Length > 0)
+            {
+                var filePath = Path.Combine(_environment.ContentRootPath,"wwwroot", _tempFolder, newFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(fileStream);
+                }
+            }
+            return newFileName;
         }
 
         public async Task<bool> DeleteFile(string id, FileType type)
         {
-            //Your code here;
-            throw new NotImplementedException();
+            var imagesFolderPath = Path.Combine(_environment.ContentRootPath, _tempFolder);
+            var filePath = Path.Combine(_tempFolder, id);
+
+            if (File.Exists(filePath))
+            {
+                await Task.Run(() =>
+                {
+                    File.Delete(filePath);
+                    return true;
+                });
+            }
+            return false;
         }
 
 

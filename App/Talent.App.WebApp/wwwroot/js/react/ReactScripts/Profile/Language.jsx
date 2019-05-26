@@ -1,8 +1,6 @@
 ﻿/* Language section */
 import React from 'react';
 import Cookies from 'js-cookie';
-import { ChildSingleInput } from '../Form/SingleInput.jsx';
-import { Form,Input,Select,Button } from 'semantic-ui-react'
 
 export default class Language extends React.Component {
     constructor(props) {
@@ -22,7 +20,6 @@ export default class Language extends React.Component {
         this.renderAdd = this.renderAdd.bind(this)
         this.openAddSection = this.openAddSection.bind(this)
         this.closeAddSection = this.closeAddSection.bind(this)
-        this.onChangeLevel = this.onChangeLevel.bind(this)
     }
 
     openAddSection() {
@@ -39,31 +36,15 @@ export default class Language extends React.Component {
 
     handleChange(event) {
         const data = Object.assign({}, this.state.languageData)
-
         data[event.target.name] = event.target.value
         this.setState({
             languageData: data
         })
-        console.log("taarget", event.target.value);
-    }
-
-
-    onChangeLevel(event, level) {
-        const data = Object.assign({}, this.state.languageData)
-        data[level.name] = level.value
-        this.setState({
-            languageData: data
-        })
-        console.log(data);
-
-        //  this.setState({ selectedProductId: select.key });
-
     }
 
     addNewLanguage() {
         const found = Object.values(this.state.languageData).find(value => value.trim() === "")
-        
-        console.log("found",found );
+
         if (found === undefined) {
             let data = this.props.languageData.concat(this.state.languageData)
             this.props.updateProfileData({ languages: data })
@@ -90,10 +71,9 @@ export default class Language extends React.Component {
     }
 
     renderAdd() {
-
         return (
             <div className="row">
-                <div className="ui four wide column">
+                <div className="ui five wide column">
                     <input
                         type="text"
                         placeholder="Add Language"
@@ -101,7 +81,7 @@ export default class Language extends React.Component {
                         value={this.state.languageData.name}
                         onChange={this.handleChange} />
                 </div>
-                <div className="ui four wide column">
+                <div className="ui five wide column">
                     <select className="ui right labeled dropdown"
                         placeholder="Language Level"
                         value={this.state.languageData.level}
@@ -118,14 +98,13 @@ export default class Language extends React.Component {
                     <button type="button" className="ui teal button" onClick={this.addNewLanguage}>Add</button>
                     <button type="button" className="ui button" onClick={this.closeAddSection}>Cancel</button>
                 </div>
-
             </div>
         )
     }
 
     render() {
-        const languageList = this.props.languageData ?
-            this.props.languageData.map(item => <LanguageDetail key={item.id} language={item} updateLanguage={this.handleUpdateLanguage} deleteLanguage={this.handleDeleteLanguage} />)
+        const languageList = this.props.languageData
+            ? this.props.languageData.map(lang => <LanguageDetail key={lang.id + lang.name} lang={lang} updateLanguage={this.handleUpdateLanguage} deleteLanguage={this.handleDeleteLanguage} />)
             : null
         return (
             <React.Fragment>
@@ -134,10 +113,10 @@ export default class Language extends React.Component {
                     <table className="ui table">
                         <thead>
                             <tr>
-                                <th className="four wide">Language</th>
+                                <th className="five wide">Language</th>
                                 <th className="four wide">Level</th>
                                 <th className="four wide"></th>
-                                <th className="four wide">
+                                <th className="three wide">
                                     <button type="button" className="ui teal right floated button" onClick={this.openAddSection}>
                                         <i className="plus small icon" />
                                         Add New
@@ -155,16 +134,15 @@ export default class Language extends React.Component {
     }
 }
 
-    export class LanguageDetail extends React.Component {
+
+
+class LanguageDetail extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             showEditSection: false,
-            language: {
-                id: '',
-                name: '',
-                level: ''
-            }
+            lang: {}           
+            
         }
 
         this.renderEdit = this.renderEdit.bind(this)
@@ -177,21 +155,17 @@ export default class Language extends React.Component {
     }
 
     handleChange(event) {
-        const data = Object.assign({}, this.state.language)
+        const data = Object.assign({}, this.state.lang)
         data[event.target.name] = event.target.value
-        this.setState({ language: data })
+        this.setState({ lang: data })
     }
 
     openEditSection() {
         const lang = {}
-        lang.id = this.props.language.id
-        lang.name = this.props.language.name
-        lang.level = this.props.language.level
-        this.setState({
-            showEditSection: true,
-            language:lang
-        })
-        
+      
+        lang.name = this.props.lang.name
+        lang.level = this.props.lang.level
+        this.setState({ showEditSection: true, lang })
     }
 
     closeEditSection() {
@@ -199,10 +173,11 @@ export default class Language extends React.Component {
     }
 
     updateData() {
-        const found = Object.values(this.state.language).find(value => value.trim() === "")
-
+        console.log("state", this.state.lang);
+        const found = Object.values(this.state.lang).find(value => value.trim() === "")
+        
         if (found === undefined) {
-            this.props.updateLanguage(this.state.language)
+            this.props.updateLanguage(this.state.lang)
             this.closeEditSection()
         } else {
             TalentUtil.notification.show("Please enter language and level", "error")
@@ -211,15 +186,15 @@ export default class Language extends React.Component {
     }
 
     deleteData() {
-        this.props.deleteLanguage(this.props.language.id)
+        this.props.deleteLanguage(this.props.lang.id)
     }
 
     renderDisplay() {
-        const { language } = this.props
+        const { lang } = this.props
         return (
             <tr>
-                <td>{language.name}</td>
-                <td>{language.level}</td>
+                <td>{lang.name}</td>
+                <td>{lang.level}</td>
                 <td></td>
                 <td className="right aligned">
                     <i className="write icon" onClick={this.openEditSection} />
@@ -230,7 +205,7 @@ export default class Language extends React.Component {
     }
 
     renderEdit() {
-        const { language } = this.state
+        const { lang } = this.state
         return (
             <tr>
                 <td>
@@ -238,14 +213,14 @@ export default class Language extends React.Component {
                         type="text"
                         placeholder="Add Language"
                         name="name"
-                        value={language.name}
+                        value={lang.name}
                         onChange={this.handleChange}
                     />
                 </td>
                 <td>
                     <select className="ui right labeled dropdown"
                         placeholder="Language Level"
-                        value={language.level}
+                        value={lang.level}
                         onChange={this.handleChange}
                         name="level">
                         <option value="">Language Level</option>
@@ -270,5 +245,3 @@ export default class Language extends React.Component {
         )
     }
 }
-
-

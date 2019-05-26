@@ -15,9 +15,28 @@
   <PropertyGroup>
     <PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\images\070558be-0130-49d1-afce-fc1ca73dedaf.jpg" />
+    <Content Remove="wwwroot\images\09d14277-7d53-448f-a4d2-289b779fe341.jpg" />
+    <Content Remove="wwwroot\images\2d25b1dd-872d-4a3b-8dc6-8fafa98c3310.png" />
+    <Content Remove="wwwroot\images\2d394dd6-9608-4579-a6b4-47b198b201f8.png" />
+    <Content Remove="wwwroot\images\3cdc8446-9eb9-4868-8a43-fd647d2422af.jpg" />
+    <Content Remove="wwwroot\images\52f10029-a8b0-42cf-97db-727512c23dff.jpg" />
+    <Content Remove="wwwroot\images\59845663-c0dc-43d7-b4ce-95f41d570aab.jpg" />
+    <Content Remove="wwwroot\images\60f721eb-546c-4d15-8822-895d297e53f0Profile2.PNG" />
+    <Content Remove="wwwroot\images\75bf7c5c-cc24-4440-938a-1f8988e5fd4c.jpg" />
+    <Content Remove="wwwroot\images\7fb70f7b-0d27-446b-9736-635fc7c0f97c.jpg" />
+    <Content Remove="wwwroot\images\82d5ea20-91a8-410f-85e2-1b5176e5cf0f.png" />
+    <Content Remove="wwwroot\images\a174de8e-ec8a-4dad-96b0-5cf05f8b2946.jpg" />
+    <Content Remove="wwwroot\images\adf999a4-43cd-4e6b-977b-8f49d32457d0.jpg" />
+    <Content Remove="wwwroot\images\e2b4905c-075d-4a67-b944-760217114210.jpg" />
+    <Content Remove="wwwroot\images\f02d1596-3e2b-45b1-99d8-f1baefbb9852.jpg" />
+    <Content Remove="wwwroot\images\f6162e94-a624-4851-9c7a-c176d918f275.jpg" />
+    <Content Remove="wwwroot\images\f7819d00-ed41-4cfd-a9c7-eea6c9a84cdc.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <Folder Include="images\" />
-    <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,6 +50,26 @@
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\images\070558be-0130-49d1-afce-fc1ca73dedaf.jpg" />
+    <None Include="wwwroot\images\09d14277-7d53-448f-a4d2-289b779fe341.jpg" />
+    <None Include="wwwroot\images\2d25b1dd-872d-4a3b-8dc6-8fafa98c3310.png" />
+    <None Include="wwwroot\images\2d394dd6-9608-4579-a6b4-47b198b201f8.png" />
+    <None Include="wwwroot\images\3cdc8446-9eb9-4868-8a43-fd647d2422af.jpg" />
+    <None Include="wwwroot\images\52f10029-a8b0-42cf-97db-727512c23dff.jpg" />
+    <None Include="wwwroot\images\59845663-c0dc-43d7-b4ce-95f41d570aab.jpg" />
+    <None Include="wwwroot\images\60f721eb-546c-4d15-8822-895d297e53f0Profile2.PNG" />
+    <None Include="wwwroot\images\75bf7c5c-cc24-4440-938a-1f8988e5fd4c.jpg" />
+    <None Include="wwwroot\images\7fb70f7b-0d27-446b-9736-635fc7c0f97c.jpg" />
+    <None Include="wwwroot\images\82d5ea20-91a8-410f-85e2-1b5176e5cf0f.png" />
+    <None Include="wwwroot\images\a174de8e-ec8a-4dad-96b0-5cf05f8b2946.jpg" />
+    <None Include="wwwroot\images\adf999a4-43cd-4e6b-977b-8f49d32457d0.jpg" />
+    <None Include="wwwroot\images\e2b4905c-075d-4a67-b944-760217114210.jpg" />
+    <None Include="wwwroot\images\f02d1596-3e2b-45b1-99d8-f1baefbb9852.jpg" />
+    <None Include="wwwroot\images\f6162e94-a624-4851-9c7a-c176d918f275.jpg" />
+    <None Include="wwwroot\images\f7819d00-ed41-4cfd-a9c7-eea6c9a84cdc.jpg" />
   </ItemGroup>
 
   <ItemGroup>
