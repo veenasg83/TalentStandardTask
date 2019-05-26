@@ -20,7 +20,6 @@
     <Content Remove="wwwroot\images\070558be-0130-49d1-afce-fc1ca73dedaf.jpg" />
     <Content Remove="wwwroot\images\09d14277-7d53-448f-a4d2-289b779fe341.jpg" />
     <Content Remove="wwwroot\images\2d25b1dd-872d-4a3b-8dc6-8fafa98c3310.png" />
-    <Content Remove="wwwroot\images\2d394dd6-9608-4579-a6b4-47b198b201f8.png" />
     <Content Remove="wwwroot\images\3cdc8446-9eb9-4868-8a43-fd647d2422af.jpg" />
     <Content Remove="wwwroot\images\52f10029-a8b0-42cf-97db-727512c23dff.jpg" />
     <Content Remove="wwwroot\images\59845663-c0dc-43d7-b4ce-95f41d570aab.jpg" />
@@ -56,7 +55,6 @@
     <None Include="wwwroot\images\070558be-0130-49d1-afce-fc1ca73dedaf.jpg" />
     <None Include="wwwroot\images\09d14277-7d53-448f-a4d2-289b779fe341.jpg" />
     <None Include="wwwroot\images\2d25b1dd-872d-4a3b-8dc6-8fafa98c3310.png" />
-    <None Include="wwwroot\images\2d394dd6-9608-4579-a6b4-47b198b201f8.png" />
     <None Include="wwwroot\images\3cdc8446-9eb9-4868-8a43-fd647d2422af.jpg" />
     <None Include="wwwroot\images\52f10029-a8b0-42cf-97db-727512c23dff.jpg" />
     <None Include="wwwroot\images\59845663-c0dc-43d7-b4ce-95f41d570aab.jpg" />
