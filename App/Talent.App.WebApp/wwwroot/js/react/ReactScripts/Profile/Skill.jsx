@@ -42,9 +42,9 @@ export default class Skill extends React.Component {
     }
 
     addNewSkill() {
-        const found = Object.values(this.state.skillData).find(value => value.trim() === "")
+        const data = Object.values(this.state.skillData).find(value => value.trim() === "")
 
-        if (found === undefined) {
+        if (data === undefined) {
             let skills = this.props.skillData.concat(this.state.skillData)
             this.props.updateProfileData({ skills })
             this.closeAddSection()
@@ -158,8 +158,12 @@ class SkillDetail extends React.Component {
     }
 
     openEdit() {
-        const { skill } = this.props
-        this.setState({ showEditSection: true, skill })
+        let skill = {}
+        skill.id = this.props.skill.id,
+        skill.name = this.props.skill.name,
+        skill.level = this.props.skill.level
+       
+        this.setState({ showEditSection: true, skill:skill })
     }
 
     closeEdit() {
@@ -167,9 +171,8 @@ class SkillDetail extends React.Component {
     }
 
     updateData() {
-        const found = Object.values(this.state.skill).find(value => value.trim() === "")
-        console.log("skill",this.state.skill);
-        if (found === undefined) {
+   
+        if (this.state.skill.name != ""  && this.state.skill.level !="") {
             this.props.updateSkill(this.state.skill)
             this.closeEdit()
         } else {

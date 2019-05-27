@@ -9,11 +9,11 @@ export class Address extends React.Component {
         const address = this.props.addressData ?
             Object.assign({}, this.props.addressData)
             : {
-                number: "12A",
+                number: "",
                 street: "",
                 suburb: "",
                 city: "",
-                country: "dfg",
+                country: "",
                 postCode:""
             }
         console.log(address)
@@ -74,7 +74,7 @@ export class Address extends React.Component {
         return (
             <div className='row'>
                 <div className='ui sixteen wide column'>
-                    <p> Address: {number}, {street}, {suburb}, {postCode}</p>
+                    <p> Address: {number || street || suburb || postCode ? `${number}, ${street}, ${suburb}, ${postCode}` : ""}</p>
                     <p>City: {city}</p>
                     <p>Country:{country}</p>
                     <button type="button" className="ui right floated teal button" onClick={this.openEdit}>Edit</button>
@@ -98,7 +98,7 @@ export class Address extends React.Component {
             cityOptions = (Cities).map((x) => <option key={x} value={x}>{x}</option>);
         }
         return (            
-                <div class='ui sixteen wide column'>
+                <div className='ui sixteen wide column'>
                     <div className="fields">
                         <div className="three wide field">
                             <ChildSingleInput

@@ -6,6 +6,8 @@ import { userNavigation } from './UserNavigation.jsx'
 import { FormErrors } from '../Form/FormErrors.jsx'
 import Cookies from 'js-cookie'
 import { EmailVerification } from './EmailVerification.jsx';
+import consts from '../APIConstants.js'
+
 
 export default class LoginForm extends React.Component {
     constructor(props) {
@@ -89,7 +91,7 @@ export default class LoginForm extends React.Component {
         }
 
         $.ajax({
-            url: 'http://localhost:60998/authentication/authentication/signin',
+            url: consts.identityAPIBaseUrl + '/authentication/authentication/signin',
             type: 'POST',
             data: JSON.stringify(loginModel),
             contentType: 'application/json',

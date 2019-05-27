@@ -1,4 +1,30 @@
-﻿
+﻿let path = require('path');
+let webpack = require('webpack');
+
+var talentApiHost, identityApiHost, profileApiHost, mode;
+
+setUpApI = function () {
+    let env = process.env.NODE_ENV ? process.env.NODE_ENV.trim() : 'dev';
+
+    switch (env) {
+        case 'production':
+            talentApiHost = "'https://talentstandard.azurewebsites.net/talent'";
+            identityApiHost = "'https://talentstandard.azurewebsites.net/identity'";
+            profileApiHost = "'https://talentstandard.azurewebsites.net/profile'";
+            mode = 'production';
+            console.log(talentApiHost);
+            break;
+        default:
+            talentApiHost = "'http://localhost:51689'";
+            identityApiHost = "'http://localhost:60998'";
+            profileApiHost = "'http://localhost:60290'";
+            mode = 'development';
+            break;
+    }
+
+};
+setUpApI();
+
 module.exports = {
     context: __dirname,
     entry: {
@@ -9,6 +35,16 @@ module.exports = {
         path: __dirname + "/dist",
         filename: "[name].bundle.js"
     },
+
+    plugins: [
+        new webpack.DefinePlugin({
+            _API_Talent_: talentApiHost,
+            _API_Identity_: identityApiHost,
+            _API_Profile_: profileApiHost,
+
+        })
+    ],
+
     watch: true,
     mode: 'development',
     module: {

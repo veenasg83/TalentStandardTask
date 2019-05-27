@@ -43,14 +43,14 @@ export default class Language extends React.Component {
     }
 
     addNewLanguage() {
-        const found = Object.values(this.state.languageData).find(value => value.trim() === "")
+        const check = Object.values(this.state.languageData).find(value => value.trim() === "")
 
-        if (found === undefined) {
+        if (check == undefined) {
             let data = this.props.languageData.concat(this.state.languageData)
             this.props.updateProfileData({ languages: data })
             this.closeAddSection()
         } else {
-            TalentUtil.notification.show("Please enter language and level", "error")
+            TalentUtil.notification.show("Please enter the language and  its level", "error")
         }
     }
 
@@ -73,7 +73,7 @@ export default class Language extends React.Component {
     renderAdd() {
         return (
             <div className="row">
-                <div className="ui five wide column">
+                <div className="ui six wide column">
                     <input
                         type="text"
                         placeholder="Add Language"
@@ -81,7 +81,7 @@ export default class Language extends React.Component {
                         value={this.state.languageData.name}
                         onChange={this.handleChange} />
                 </div>
-                <div className="ui five wide column">
+                <div className="ui six wide column">
                     <select className="ui right labeled dropdown"
                         placeholder="Language Level"
                         value={this.state.languageData.level}
@@ -94,7 +94,7 @@ export default class Language extends React.Component {
                         <option key="Native/Bilingual" value="Native/Bilingual">Native/Bilingual</option>
                     </select>
                 </div>
-                <div className="ui six wide column">
+                <div className="ui four wide column">
                     <button type="button" className="ui teal button" onClick={this.addNewLanguage}>Add</button>
                     <button type="button" className="ui button" onClick={this.closeAddSection}>Cancel</button>
                 </div>
@@ -141,8 +141,11 @@ class LanguageDetail extends React.Component {
         super(props)
         this.state = {
             showEditSection: false,
-            lang: {}           
-            
+            lang: {
+                id: '',
+                name: '',
+                level: ''
+            }
         }
 
         this.renderEdit = this.renderEdit.bind(this)
@@ -162,7 +165,7 @@ class LanguageDetail extends React.Component {
 
     openEditSection() {
         const lang = {}
-      
+        lang.id = this.props.lang.id
         lang.name = this.props.lang.name
         lang.level = this.props.lang.level
         this.setState({ showEditSection: true, lang })
@@ -173,10 +176,9 @@ class LanguageDetail extends React.Component {
     }
 
     updateData() {
-        console.log("state", this.state.lang);
-        const found = Object.values(this.state.lang).find(value => value.trim() === "")
-        
-        if (found === undefined) {
+        const check = Object.values(this.state.lang).find(value => value.trim() === "")
+
+        if (check === undefined) {
             this.props.updateLanguage(this.state.lang)
             this.closeEditSection()
         } else {
@@ -187,6 +189,7 @@ class LanguageDetail extends React.Component {
 
     deleteData() {
         this.props.deleteLanguage(this.props.lang.id)
+        console.log("id", this.props.lang.id);
     }
 
     renderDisplay() {

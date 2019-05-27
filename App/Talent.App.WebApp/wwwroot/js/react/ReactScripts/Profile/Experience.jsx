@@ -152,7 +152,7 @@ export default class Experience extends React.Component {
                 </div>
             </div>
 
-        )
+           )
     }
 
     render() {
