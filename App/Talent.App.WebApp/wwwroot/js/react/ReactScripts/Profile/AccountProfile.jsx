@@ -299,12 +299,7 @@ export default class AccountProfile extends React.Component {
                                                 saveCVUrl={consts.profileAPIBaseUrl +'/profile/profile/updateTalentCV'}
                                             />
                                         </FormItemWrapper>
-                                        <SelfIntroduction
-                                            summary={this.state.profileData.summary}
-                                            description={this.state.profileData.description}
-                                            updateProfileData={this.updateAndSaveData}
-                                            updateWithoutSave={this.updateWithoutSave}
-                                        />
+                                        
                                     </div>
                                 </form>
                             </div >
