@@ -15,7 +15,7 @@ export default class Language extends React.Component {
         }
         this.handleChange = this.handleChange.bind(this)
         this.addNewLanguage = this.addNewLanguage.bind(this)
-        this.handleUpdateLanguage = this.handleUpdateLanguage.bind(this)
+        this.handleEditLanguage = this.handleEditLanguage.bind(this)
         this.handleDeleteLanguage = this.handleDeleteLanguage.bind(this)
         this.renderAdd = this.renderAdd.bind(this)
         this.openAddSection = this.openAddSection.bind(this)
@@ -54,7 +54,7 @@ export default class Language extends React.Component {
         }
     }
 
-    handleUpdateLanguage(lang) {
+    handleEditLanguage(lang) {
         let data = this.props.languageData.slice()
         data.forEach(function (element) {
             if (element.id === lang.id) {
@@ -104,7 +104,7 @@ export default class Language extends React.Component {
 
     render() {
         const languageList = this.props.languageData
-            ? this.props.languageData.map(lang => <LanguageDetail key={lang.id + lang.name} lang={lang} updateLanguage={this.handleUpdateLanguage} deleteLanguage={this.handleDeleteLanguage} />)
+            ? this.props.languageData.map(lang => <LanguageDetail key={lang.id + lang.name} lang={lang} updateLanguage={this.handleEditLanguage} deleteLanguage={this.handleDeleteLanguage} />)
             : null
         return (
             <React.Fragment>

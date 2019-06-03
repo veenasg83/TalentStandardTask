@@ -8,9 +8,9 @@ setUpApI = function () {
 
     switch (env) {
         case 'production':
-            talentApiHost = "'https://talentstandard.azurewebsites.net/talent'";
-            identityApiHost = "'https://talentstandard.azurewebsites.net/identity'";
-            profileApiHost = "'https://talentstandard.azurewebsites.net/profile'";
+            talentApiHost = "'https://talentstandardtask.azurewebsites.net/talent'";
+            identityApiHost = "'https://talentstandardtask.azurewebsites.net/identity'";
+            profileApiHost = "'https://talentstandardtask.azurewebsites.net/profile'";
             mode = 'production';
             console.log(talentApiHost);
             break;

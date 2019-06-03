@@ -14,6 +14,7 @@
 
   <PropertyGroup>
     <PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
+    <UserSecretsId>82a6a220-0169-4da6-a400-0470c9b50546</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
