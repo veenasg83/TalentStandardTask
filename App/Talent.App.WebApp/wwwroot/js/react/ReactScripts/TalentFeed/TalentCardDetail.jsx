@@ -60,7 +60,7 @@ export default class TalentCardDetail extends React.Component {
                         </h5>
                         <h5 className="ui header">POSITION
                             <div className="sub header">
-                                {talent.position}
+                                {talent.level}
                             </div>
                         </h5>
                     </div>
@@ -69,7 +69,7 @@ export default class TalentCardDetail extends React.Component {
 
             )
         const skillset = talent.skills ?
-            talent.skills.map(skill => <label className="ui basic blue label">{skill}</label>)
+            talent.skills.map(skill => <label className="ui basic blue label" key={skill}>{skill}</label>)
             : null
 
         return (

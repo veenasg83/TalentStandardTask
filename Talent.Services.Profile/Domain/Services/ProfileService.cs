@@ -413,31 +413,29 @@ namespace Talent.Services.Profile.Domain.Services
             catch(Exception e)
             {
                 e.ToJson();
-            }
+            }                  
             
-           // List<User> talents = (await _userRepository.Get(x => true)).ToList();
-
-
             if (profile != null)
             {
-                var result = new List<TalentSnapshotViewModel>();
+                var talentList = new List<TalentSnapshotViewModel>();
                 foreach (var talent in listTalent)
-                {
-                    var currentEmployment = "Not Employed";
-                    var currentPosition = "Not Employed";
+                {                   
                     var visa = talent.VisaStatus;
-                    if (visa == null) visa = "Unknown";
+                    if (visa == null)
+                        visa = "not specified";
                     var skills = talent.Skills.Select(x => ViewModelFromSkill(x).Name).ToList();
                     var experience = talent.Experience.Select(x => ViewModelFromExperience(x)).ToList();
+                    var currentEmployment = "Not Employed";
+                    var currentPosition = "Not Employed";
 
                     if (experience.Count != 0)
                     {
                         var currentExperience = experience.OrderByDescending(x => x.End).FirstOrDefault();
-                        currentPosition = currentExperience.Position;
                         currentEmployment = currentExperience.Company;
+                        currentPosition = currentExperience.Position;                       
                     }
 
-                    var snapshot = new TalentSnapshotViewModel
+                    var talentView = new TalentSnapshotViewModel
                     {
                         Id = talent.Id,
                         Name = talent.FirstName + ' ' + talent.LastName,
@@ -445,14 +443,14 @@ namespace Talent.Services.Profile.Domain.Services
                         VideoUrl = talent.VideoName,
                         CVUrl = talent.CvName,
                         Summary = talent.Summary,
-                        CurrentEmployment = currentEmployment,
-                       // Position = currentPosition,
+                        CurrentEmployment = currentEmployment,                     
                         Visa = visa,
+                        Level = currentPosition,
                         Skills = skills
                     };
-                    result.Add(snapshot);
+                    talentList.Add(talentView);
                 }
-                return result;
+                return talentList;
             }
             return null;
             //throw new NotImplementedException();
