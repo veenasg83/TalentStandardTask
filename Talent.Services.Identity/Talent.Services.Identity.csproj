@@ -17,6 +17,7 @@
     <UserSecretsId>96ab647f-ca99-4a4b-8593-33f60ac9e188</UserSecretsId>
 </PropertyGroup>
   <ItemGroup>
+    <Folder Include="Properties\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

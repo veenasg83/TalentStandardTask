@@ -6,7 +6,7 @@ import { LoggedInNavigation } from '../../Layout/LoggedInNavigation.jsx';
 import { JobSummaryCard } from './JobSummaryCard.jsx';
 import { BodyWrapper, loaderData } from '../../Layout/BodyWrapper.jsx';
 import { Pagination, Icon, Dropdown, Checkbox, Accordion, Form, Segment } from 'semantic-ui-react';
-
+import consts from '../../APIConstants.js'
 export default class ManageJob extends React.Component {
     constructor(props) {
         super(props);

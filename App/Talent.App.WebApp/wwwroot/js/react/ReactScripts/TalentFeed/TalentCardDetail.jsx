@@ -8,7 +8,7 @@ export default class TalentCardDetail extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            view: 'profile'
+            view: 'video'
         }
 
         this.showProfile = this.showProfile.bind(this);

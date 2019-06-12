@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <Folder Include="Domain\Models\" />
+    <Folder Include="Properties\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

@@ -10,7 +10,7 @@ export default class CompanyProfile extends React.Component {
     render() {
         if (!this.props.companyDetails) return null
         const { companyDetails } = this.props
-        const profilePhoto = consts.profileAPIBaseUrl+"/images/square-image.png"
+        const profilePhoto = "/images/square-image.png"
         return (
             <React.Fragment>
 
