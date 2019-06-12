@@ -1,5 +1,6 @@
 ﻿import React from 'react';
 import { Loader } from 'semantic-ui-react';
+import consts from '../APIConstants.js'
 
 export default class CompanyProfile extends React.Component {
     constructor(props) {
@@ -9,7 +10,7 @@ export default class CompanyProfile extends React.Component {
     render() {
         if (!this.props.companyDetails) return null
         const { companyDetails } = this.props
-        const profilePhoto =  "http://localhost:60290/images/square-image.png"
+        const profilePhoto = consts.profileAPIBaseUrl+"/images/square-image.png"
         return (
             <React.Fragment>
 

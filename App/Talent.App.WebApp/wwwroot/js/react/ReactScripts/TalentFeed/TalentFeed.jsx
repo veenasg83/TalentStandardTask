@@ -6,6 +6,7 @@ import { Loader, Icon, Pagination } from 'semantic-ui-react';
 import CompanyProfile from '../TalentFeed/CompanyProfile.jsx';
 import FollowingSuggestion from '../TalentFeed/FollowingSuggestion.jsx';
 import { BodyWrapper, loaderData } from '../Layout/BodyWrapper.jsx';
+import consts from '../APIConstants.js';
 
 export default class TalentFeed extends React.Component {
     constructor(props) {
@@ -51,7 +52,7 @@ export default class TalentFeed extends React.Component {
         var cookies = Cookies.get('talentAuthToken');
         // console.log("inside loademployer");
         $.ajax({
-            url: 'http://localhost:60290/profile/profile/getEmployerProfile',
+            url: consts.profileAPIBaseUrl+'/profile/profile/getEmployerProfile',
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'
@@ -81,7 +82,7 @@ export default class TalentFeed extends React.Component {
         var cookies = Cookies.get('talentAuthToken');
        // console.log("loadTalentData");
         $.ajax({
-            url: 'http://localhost:60290/profile/profile/getTalent',
+            url: consts.profileAPIBaseUrl+'/profile/profile/getTalent',
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'
