@@ -30,6 +30,7 @@ export default class TalentFeed extends React.Component {
 
         this.init = this.init.bind(this);
         this.loadEmployerData = this.loadEmployerData.bind(this);
+        this.loadTalentData = this.loadTalentData.bind(this);
 
 
     };
@@ -41,8 +42,9 @@ export default class TalentFeed extends React.Component {
     }
 
     componentDidMount() {
+        this.loadTalentData()
+        this.loadEmployerData()       
         this.init()
-        this.loadEmployerData()
     };
 
     loadEmployerData() {
@@ -75,18 +77,43 @@ export default class TalentFeed extends React.Component {
 
     }
 
+    loadTalentData() {
+        var cookies = Cookies.get('talentAuthToken');
+       // console.log("loadTalentData");
+        $.ajax({
+            url: 'http://localhost:60290/profile/profile/getTalent',
+            headers: {
+                'Authorization': 'Bearer ' + cookies,
+                'Content-Type': 'application/json'
+            },
+            type: "GET",
+            contenttype: "application/json",
+            dataType: "json",
+            success: function (res) {
+                let data = null;
+                if (res.success) {
+                    data = res.data;
+                    this.setState({
+                        talentDetails: data
+                    })
+                }
+            }.bind(this),
+            error: function (res) {
+                console.log(res.status)
+            }
 
-
-
-
-    handlePageChange(e, { activePage }) {
-        const loadPosition = (activePage - 1) * this.state.loadNumber
-        this.setState({ activePage, loadPosition }, () => this.loadTalentData())
+        })
     }
-
+       
     render() {
-
-
+        const talent = this.state.talentDetails ?
+            <div className = "ui eight wide column">
+                 <TalentCard talent={this.state.talentDetails} /> 
+            </div>
+            :
+            <div className="ui eight wide column">
+                <h4>There are no talents found for your recruitment company</h4>
+            </div>
 
         return (
             <BodyWrapper reload={this.init} loaderData={this.state.loaderData}>
@@ -97,9 +124,7 @@ export default class TalentFeed extends React.Component {
                                 <CompanyProfile companyDetails={this.state.companyDetails} />
                             </div>
                         </div>
-
-                    
-
+                        {talent}             
                         <div className="ui four wide column">
                             <div className="  ui card" >
                                 <FollowingSuggestion />

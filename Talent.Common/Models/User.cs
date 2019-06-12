@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Talent.Common.Models
 {
+    [BsonIgnoreExtraElements]
     public class User : IMongoCommon
     {
         public Guid UId { get; set; }
@@ -31,7 +32,7 @@ namespace Talent.Common.Models
         public DateTime? VisaExpiryDate { get; set; }
         public string Summary { get; set; }
         public string Description { get; set; }
-
+        
         public List<UserLanguage> Languages { get; set; }
         public List<UserSkill> Skills { get; set; }
         public List<UserEducation> Education { get; set; }
@@ -51,6 +52,7 @@ namespace Talent.Common.Models
         public bool IsDeleted { get; set; }
         public Login Login { get; set; }
 
+        
         public User()
         {
             Languages = new List<UserLanguage>();

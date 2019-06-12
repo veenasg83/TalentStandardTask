@@ -400,14 +400,67 @@ namespace Talent.Services.Profile.Domain.Services
             throw new NotImplementedException();
         }
 
+
         public async Task<IEnumerable<TalentSnapshotViewModel>> GetTalentSnapshotList(string employerOrJobId, bool forJob, int position, int increment)
         {
-            //Your code here;
-            throw new NotImplementedException();
+            Employer profile = (await _employerRepository.GetByIdAsync(employerOrJobId));
+
+            var listTalent = new List<User>();
+            try
+            {
+                listTalent = _userRepository.Collection.ToList();
+            }
+            catch(Exception e)
+            {
+                e.ToJson();
+            }
+            
+           // List<User> talents = (await _userRepository.Get(x => true)).ToList();
+
+
+            if (profile != null)
+            {
+                var result = new List<TalentSnapshotViewModel>();
+                foreach (var talent in listTalent)
+                {
+                    var currentEmployment = "Not Employed";
+                    var currentPosition = "Not Employed";
+                    var visa = talent.VisaStatus;
+                    if (visa == null) visa = "Unknown";
+                    var skills = talent.Skills.Select(x => ViewModelFromSkill(x).Name).ToList();
+                    var experience = talent.Experience.Select(x => ViewModelFromExperience(x)).ToList();
+
+                    if (experience.Count != 0)
+                    {
+                        var currentExperience = experience.OrderByDescending(x => x.End).FirstOrDefault();
+                        currentPosition = currentExperience.Position;
+                        currentEmployment = currentExperience.Company;
+                    }
+
+                    var snapshot = new TalentSnapshotViewModel
+                    {
+                        Id = talent.Id,
+                        Name = talent.FirstName + ' ' + talent.LastName,
+                        PhotoId = talent.ProfilePhotoUrl,
+                        VideoUrl = talent.VideoName,
+                        CVUrl = talent.CvName,
+                        Summary = talent.Summary,
+                        CurrentEmployment = currentEmployment,
+                       // Position = currentPosition,
+                        Visa = visa,
+                        Skills = skills
+                    };
+                    result.Add(snapshot);
+                }
+                return result;
+            }
+            return null;
+            //throw new NotImplementedException();
         }
 
         public async Task<IEnumerable<TalentSnapshotViewModel>> GetTalentSnapshotList(IEnumerable<string> ids)
         {
+
             //Your code here;
             throw new NotImplementedException();
         }
